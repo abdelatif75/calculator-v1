@@ -33,7 +33,7 @@ public class Main extends JFrame implements ActionListener {
         }
         add(panel, BorderLayout.CENTER);
 
-        setTitle("calcu");
+        setTitle("calculator");
         setSize(300, 300);
         setLocationRelativeTo(null);
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
