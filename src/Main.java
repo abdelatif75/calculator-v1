@@ -5,9 +5,9 @@ import java.awt.event.*;
 public class Main extends JFrame implements ActionListener {
     private JTextField display;
     private JButton[] buttons;
-    private String[] labels = {"7", "8", "9", "+", "4", "5", "6", "-", "1", "2", "3", "*", ".", "0", "=", "/", "C"};
+    private String[] labels = {"7", "8", "9", "4", "5", "6",  "1", "2", "3", ".", "0", "=", "C"};
 
-    private double result = 0;
+    private String result ;
     private String operator = "=";
     private boolean startOfNumber = true;
 
@@ -27,7 +27,7 @@ public class Main extends JFrame implements ActionListener {
 
         add(display, BorderLayout.NORTH);
         JPanel panel = new JPanel();
-        panel.setLayout(new GridLayout(5, 4, 2, 2));
+        panel.setLayout(new GridLayout(5, 3, 2, 2));
         for (int i = 0; i < labels.length; i++) {
             panel.add(buttons[i]);
         }
@@ -45,7 +45,7 @@ public class Main extends JFrame implements ActionListener {
         String command = ae.getActionCommand();
         if (command.charAt(0) == 'C') {
             display.setText("");
-            result = 0;
+            result = Character.toString('0');
             operator = "=";
             startOfNumber = true;
         } else if (command.charAt(0) >= '0' && command.charAt(0) <= '9' || command.equals(".")) {
@@ -76,20 +76,8 @@ public class Main extends JFrame implements ActionListener {
 
     public void calculate(double n) {
         switch (operator) {
-            case "+":
-                result += n;
-                break;
-            case "-":
-                result -= n;
-                break;
-            case "*":
-                result *= n;
-                break;
-            case "/":
-                result /= n;
-                break;
             case "=":
-                result = n;
+                result = Double.toHexString(n);
                 break;
         }
         display.setText("" + result);
